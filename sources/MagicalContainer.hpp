@@ -1,0 +1,112 @@
+//
+// Created by asaf7 on 6/4/2023.
+//
+
+#ifndef MAGICAL_ITERATORS_A_MAGICALCONTAINER_HPP
+#define MAGICAL_ITERATORS_A_MAGICALCONTAINER_HPP
+
+#include "DoublyLinkedList.h"
+
+using namespace std;
+
+namespace ariel {
+
+    class MagicalContainer {
+    private:
+        DoublyLinkedList container;
+    public:
+        MagicalContainer();
+
+        ~MagicalContainer();
+
+        void addElement(int element);
+
+        void removeElement(int element);
+
+        int size();
+
+        class AscendingIterator {
+        private:
+            MagicalContainer &container;
+            Node *current;
+
+
+        public:
+            explicit AscendingIterator(MagicalContainer &container);
+
+            AscendingIterator begin();
+
+            AscendingIterator end();
+
+            AscendingIterator(MagicalContainer &container, Node *current);
+
+            AscendingIterator(const AscendingIterator &other);
+
+            AscendingIterator &operator=(const AscendingIterator &other);
+
+            AscendingIterator &operator++();
+
+            int operator*();
+
+            bool operator==(const AscendingIterator &other) const;
+
+            bool operator!=(const AscendingIterator &other) const;
+        };
+
+        class SideCrossIterator {
+        private:
+            MagicalContainer &container;
+            Node *current;
+        public:
+            SideCrossIterator begin();
+
+            SideCrossIterator end();
+
+            explicit SideCrossIterator(MagicalContainer &container);
+
+            SideCrossIterator(MagicalContainer &container, Node *current);
+
+            SideCrossIterator(const SideCrossIterator &other);
+
+            SideCrossIterator &operator=(const SideCrossIterator &other);
+
+            SideCrossIterator &operator++();
+
+            int operator*();
+
+            bool operator==(const SideCrossIterator &other) const;
+
+            bool operator!=(const SideCrossIterator &other) const;
+        };
+
+        class PrimeIterator {
+        private:
+            MagicalContainer &container;
+            Node *current;
+        public:
+            PrimeIterator(MagicalContainer &container);
+
+            PrimeIterator begin();
+
+            PrimeIterator end();
+
+            PrimeIterator(MagicalContainer &container, Node *current);
+
+            PrimeIterator(const PrimeIterator &other);
+
+            PrimeIterator &operator=(const PrimeIterator &other);
+
+            PrimeIterator &operator++();
+
+            int operator*();
+
+            bool operator==(const PrimeIterator &other) const;
+
+            bool operator!=(const PrimeIterator &other) const;
+        };
+
+
+    }; // ariel
+
+#endif //MAGICAL_ITERATORS_A_MAGICALCONTAINER_HPP
+}
